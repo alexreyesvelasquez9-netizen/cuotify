@@ -4,8 +4,8 @@
   "description": "API REST para Cuotify",
   "main": "src/app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
