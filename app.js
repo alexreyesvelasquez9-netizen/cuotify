@@ -2,11 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const pool = require('./config/db');
-const { verificarToken, soloAdministrador } = require('./middlewares/auth');
+const pool = require('./db');
+const { verificarToken, soloAdministrador } = require('./auth');
 
 // Importación de las rutas modulares
-const cuotasRoutes = require('./routes/cuotas.routes');
+const cuotasRoutes = require('./cuotas.routes');
 
 const app = express();
 app.use(express.json());
