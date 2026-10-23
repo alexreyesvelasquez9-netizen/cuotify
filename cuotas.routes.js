@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../config/db');
-const { verificarToken, soloAdministrador } = require('../middlewares/auth');
+const pool = require('../db');
+const { verificarToken, soloAdministrador } = require('../auth');
 
 // ==========================================
 // RUTA: Generación masiva de cuotas del mes
