@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+// Importaciones desde la misma carpeta
 const pool = require('./db');
 const { verificarToken, soloAdministrador } = require('./auth');
-
-// Importación de las rutas modulares
 const cuotasRoutes = require('./cuotas.routes');
 
 const app = express();
@@ -31,7 +31,6 @@ app.post('/api/auth/login', async (req, res) => {
       return res.status(401).json({ message: 'Credenciales inválidas.' });
     }
 
-    // Generar token JWT con vigencia
     const token = jwt.sign(
       { id_usuario: usuario.id_usuario, id_comunidad: usuario.id_comunidad, rol: usuario.rol },
       JWT_SECRET,
@@ -76,7 +75,6 @@ app.post('/api/auth/cambiar-clave', verificarToken, async (req, res) => {
 // ==========================================
 // REGISTRO DE RUTAS MODULARES
 // ==========================================
-// Todas las peticiones a /api/cuotas serán manejadas por cuotas.routes.js
 app.use('/api/cuotas', cuotasRoutes);
 
 // ==========================================
@@ -154,7 +152,7 @@ app.get('/api/viviendas/:id/estado-cuenta', verificarToken, async (req, res) => 
   }
 });
 
-// Inicialización del servidor puerto 3000
+// Inicialización del servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor API REST de Cuotify corriendo en el puerto ${PORT}`);
